@@ -1175,6 +1175,224 @@ table.matrix tbody td strong{
   text-transform: uppercase;
 }
 
+/* ===== 流し読み導線：TL;DR / SUMMARY / KEYIMAGE ===== */
+
+/* TL;DR：章冒頭の一行サマリ */
+.tldr{
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 18px;
+  margin: 0 0 28px;
+  padding: 22px 26px 24px;
+  background: linear-gradient(135deg, rgba(155,32,24,.045) 0%, rgba(184,138,44,.05) 100%);
+  border: 1px solid rgba(155,32,24,.18);
+  border-radius: 2px;
+  position: relative;
+}
+.tldr::before{
+  content:"";
+  position: absolute;
+  top: 0; bottom: 0; left: 0;
+  width: 4px;
+  background: var(--vermilion);
+}
+.tldr .lbl{
+  font-family: var(--display-en);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--vermilion-deep);
+  padding: 4px 10px;
+  background: var(--paper-warm);
+  border-radius: 2px;
+  white-space: nowrap;
+  align-self: start;
+  margin-top: 3px;
+}
+.tldr .body{
+  font-family: var(--serif-jp);
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--ink);
+  letter-spacing: .015em;
+}
+.tldr .body strong{
+  background: linear-gradient(transparent 60%, rgba(184,138,44,.32) 60%);
+  padding: 0 .08em;
+  font-weight: 700;
+}
+@media(max-width: 600px){
+  .tldr{ grid-template-columns: 1fr; gap: 10px; padding: 18px 20px 20px }
+  .tldr .lbl{ justify-self: start }
+  .tldr .body{ font-size: 16px }
+}
+
+/* キービジュアル（章のSVG骨格図） */
+.keyvis{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin: 26px 0 30px;
+  padding: 24px 28px;
+  background: rgba(255,253,248,.55);
+  border: 1px solid var(--rule-soft);
+  border-radius: 2px;
+}
+@media(min-width: 720px){
+  .keyvis{
+    grid-template-columns: 1fr 220px;
+    align-items: center;
+    gap: 32px;
+  }
+}
+.keyvis .kv-text{
+  display: grid;
+  gap: 10px;
+}
+.keyvis .kv-lbl{
+  font-family: var(--display-en);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--vermilion-deep);
+}
+.keyvis .kv-cap{
+  font-family: var(--serif-jp);
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--ink-soft);
+  margin: 0;
+}
+.keyvis .kv-fig{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 140px;
+}
+.keyvis .kv-fig svg{
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  display: block;
+}
+
+/* 章末の「覚えておく一行」 */
+.takeaway{
+  margin-top: 22px;
+  padding: 18px 24px 20px;
+  border-top: 1px solid var(--vermilion);
+  background: rgba(155,32,24,.03);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 18px;
+  align-items: baseline;
+}
+.takeaway .ico{
+  font-family: var(--display-en);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: .22em;
+  color: var(--vermilion-deep);
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding-top: 2px;
+}
+.takeaway .ico .ja{
+  display: block;
+  font-family: var(--serif-jp);
+  font-style: normal;
+  font-size: 11px;
+  letter-spacing: .14em;
+  color: var(--ink-mute);
+  margin-top: 2px;
+}
+.takeaway .line{
+  font-family: var(--serif-jp);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--ink);
+  letter-spacing: .02em;
+}
+@media(max-width: 600px){
+  .takeaway{ grid-template-columns: 1fr; gap: 8px; padding: 16px 20px 18px }
+}
+
+/* マージン抜き出し（本文中の重要文をプル） */
+.pullout{
+  position: relative;
+  margin: 26px 0;
+  padding: 14px 0 14px 22px;
+  border-left: 2px solid var(--gold);
+  font-family: var(--serif-jp);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--ink);
+  letter-spacing: .015em;
+  background: linear-gradient(90deg, rgba(184,138,44,.05), transparent 60%);
+}
+
+/* 幕間の「この幕で答える問い」 */
+.act-questions{
+  max-width: 38em;
+  margin: 36px auto 0;
+  padding: 24px 28px;
+  background: rgba(255,253,248,.6);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  text-align: left;
+}
+.act-questions .lbl{
+  font-family: var(--display-en);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--vermilion-deep);
+  margin-bottom: 14px;
+  display: block;
+  text-align: center;
+}
+.act-questions ol{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: aq;
+  display: grid;
+  gap: 12px;
+}
+.act-questions li{
+  counter-increment: aq;
+  display: grid;
+  grid-template-columns: 2.4em 1fr;
+  gap: 14px;
+  align-items: baseline;
+  font-family: var(--serif-jp);
+  font-weight: 500;
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: var(--ink-soft);
+}
+.act-questions li::before{
+  content: "Q." counter(aq);
+  font-family: var(--display-en);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--vermilion-deep);
+  letter-spacing: .08em;
+}
+
 /* ===== 印刷 ===== */
 @media print{
   body{ background: white; color: black }
@@ -1283,6 +1501,24 @@ table.matrix tbody td strong{
       <div style="margin-top: 56px;">
         <p class="lede-p">『The Timeless Way of Building』は、表紙にも目次にも「建築（building）」と書かれている。にもかかわらず、読み終えたとき残るのは、レンガや梁の話ではない。残るのは、<strong>「よさとは何か」「どうしてある場所は生きていて、ある場所は死んでいるのか」「それを生み出すのは誰で、どうやって渡されるのか」</strong>という、ほとんど倫理学の問いである。建築は、その問いの最も具体的で、最も身体に直結した実例として選ばれているにすぎない。</p>
 
+        <div style="margin: 40px 0; padding: 28px 30px 26px; background: rgba(255,253,248,.6); border: 1px solid var(--rule); border-radius: 2px;">
+          <div style="font-family: var(--display-en); font-style:italic; font-weight:600; font-size:11px; letter-spacing:.26em; text-transform:uppercase; color: var(--vermilion-deep); margin-bottom:14px; text-align:center;">— How to Read This Document ／ このノートの読み方 —</div>
+          <div style="display:grid; grid-template-columns: 1fr; gap: 14px;">
+            <div style="display:grid; grid-template-columns: 7em 1fr; gap: 16px; align-items: baseline;">
+              <span style="font-family:var(--display-en); font-style:italic; font-weight:600; font-size:13px; color:var(--vermilion-deep); letter-spacing:.1em;">5 min</span>
+              <span style="font-family:var(--serif-jp); font-size:14.5px; line-height:1.85; color:var(--ink-soft);">各章冒頭の<strong style="color:var(--ink); background: linear-gradient(transparent 60%, rgba(184,138,44,.32) 60%); padding:0 .08em;">TL;DR</strong>と、章末の<strong style="color:var(--ink); background: linear-gradient(transparent 60%, rgba(184,138,44,.32) 60%); padding:0 .08em;">Take Away</strong>だけを拾い読み。</span>
+            </div>
+            <div style="display:grid; grid-template-columns: 7em 1fr; gap: 16px; align-items: baseline;">
+              <span style="font-family:var(--display-en); font-style:italic; font-weight:600; font-size:13px; color:var(--vermilion-deep); letter-spacing:.1em;">15 min</span>
+              <span style="font-family:var(--serif-jp); font-size:14.5px; line-height:1.85; color:var(--ink-soft);">それに加えて、各章の<strong style="color:var(--ink); background: linear-gradient(transparent 60%, rgba(184,138,44,.32) 60%); padding:0 .08em;">Key Image（骨格図）</strong>と、各幕の<strong style="color:var(--ink); background: linear-gradient(transparent 60%, rgba(184,138,44,.32) 60%); padding:0 .08em;">問い</strong>。</span>
+            </div>
+            <div style="display:grid; grid-template-columns: 7em 1fr; gap: 16px; align-items: baseline;">
+              <span style="font-family:var(--display-en); font-style:italic; font-weight:600; font-size:13px; color:var(--vermilion-deep); letter-spacing:.1em;">30 min</span>
+              <span style="font-family:var(--serif-jp); font-size:14.5px; line-height:1.85; color:var(--ink-soft);">本文（Argument・Logic・Reach）まで通読。アレグザンダーの論理の運びを追える。</span>
+            </div>
+          </div>
+        </div>
+
         <p>アレグザンダーは、この本を三層の構造で書いた。第一層は<strong>名のない質（the quality without a name）</strong>を提示する。第二層は、その質に到達するための<strong>道筋（the gate）</strong>として、パターンと言語の働きを示す。第三層は、その道を歩いてみて初めて到達できる、<strong>無我の地点（egolessness）</strong>である。読者は、本を読み進めるあいだに、知識を得るのではなく、<em>視点</em>を獲得する。これは設計のための手引きではない。<strong>世界の見え方の変更</strong>である。</p>
 
         <p>本書は、建築家のためだけの本ではない。事実、後年この本のアイディアは、ソフトウェアの世界に飛び火し、デザインパターン運動を生み、Wikiを生み、エクストリーム・プログラミングへつながった。それは偶然ではない。アレグザンダーが扱っているのは、<strong>「複雑な全体を、生きた状態で立ち上がらせる」</strong>という、あらゆる創造的実践に共通する課題だからだ。スタジアムも、大会の運営も、ファンクラブの仕組みも、長く愛される雑誌のレイアウトも、すべてこの問題を抱えている。</p>
@@ -1308,6 +1544,14 @@ table.matrix tbody td strong{
   <div class="ja">第一幕 ／ 名のない質</div>
   <p class="lede">ある建物、ある町、ある部屋には、言葉では言いがたい<em>「いきいきしさ」</em>が宿っている。それは美ではない、機能でもない、文化でもない。アレグザンダーはまず、この質に名前を与えることを<strong>あえて拒む</strong>ところから始める。なぜなら、名づけは輪郭を固定し、生きた質をたちまち殺すからである。第一幕は、その質の存在をなんとか言葉で囲い込もうとする、五つの試みからなる。</p>
   <div class="ornament"></div>
+  <div class="act-questions">
+    <span class="lbl">— 第一幕で答える3つの問い —</span>
+    <ol>
+      <li>「いい場所」と「死んだ場所」は、何が違うのか？</li>
+      <li>その違いを、どんな言葉で囲い込めるのか？</li>
+      <li>場所の性格を決めているのは、形か、それとも別の何かか？</li>
+    </ol>
+  </div>
 </section>
 
 <section class="essay">
@@ -1322,6 +1566,41 @@ table.matrix tbody td strong{
           <div class="en">The <em>Timeless</em> Way</div>
           <div class="ja">時を超えた道 ／ 古来人がよい場所を生み出してきた、ただ一つの方法</div>
           <div class="meta">Chapter 01 ／ Foundational Premise</div>
+        </div>
+      </div>
+
+      <div class="tldr">
+        <span class="lbl">TL;DR</span>
+        <div class="body">よい場所を生み出す方法は、<strong>時代と地域を貫いて、ただひとつ</strong>。それは個人の才能ではなく、共有された<strong>生成の作法</strong>である──本書はこの断言から始まる。</div>
+      </div>
+
+      <div class="keyvis">
+        <div class="kv-text">
+          <span class="kv-lbl">Key Image ／ 章の骨格</span>
+          <p class="kv-cap">時代も地域も様式も違うが、生きた場所には<strong>共通の生成のしかた</strong>がある。表面の様式はちがっても、骨格はひとつ。</p>
+        </div>
+        <div class="kv-fig">
+          <svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+            <g fill="none" stroke="#9b2018" stroke-width="1.2">
+              <!-- ギリシャ -->
+              <path d="M20 90 L20 70 L40 50 L60 70 L60 90 Z M28 75 L28 90 M52 75 L52 90"/>
+              <!-- 日本 -->
+              <path d="M85 90 L85 65 L100 55 L115 65 L115 90 Z M85 65 L115 65"/>
+              <line x1="92" y1="65" x2="92" y2="90"/>
+              <line x1="108" y1="65" x2="108" y2="90"/>
+              <!-- 北欧 -->
+              <path d="M140 90 L140 70 L160 50 L180 70 L180 90 Z"/>
+              <line x1="155" y1="78" x2="165" y2="78"/>
+              <rect x="158" y="78" width="4" height="12"/>
+            </g>
+            <g font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="9" fill="#7a6d5e">
+              <text x="40" y="108" text-anchor="middle">Greece</text>
+              <text x="100" y="108" text-anchor="middle">Japan</text>
+              <text x="160" y="108" text-anchor="middle">Nordic</text>
+            </g>
+            <line x1="20" y1="125" x2="180" y2="125" stroke="#b88a2c" stroke-width=".8" stroke-dasharray="2,3"/>
+            <text x="100" y="135" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="9" fill="#9b2018">— one shared way of building —</text>
+          </svg>
         </div>
       </div>
 
@@ -1354,6 +1633,11 @@ table.matrix tbody td strong{
         <span class="tag">Anti-Modernist</span>
         <span class="tag">One Method</span>
       </div>
+
+      <div class="takeaway">
+        <span class="ico">Take Away<span class="ja">この章で覚える一行</span></span>
+        <div class="line">よさは、個人の天才ではなく、<strong>共有された方法</strong>に宿る。</div>
+      </div>
     </article>
 
     <!-- 第2章 -->
@@ -1364,6 +1648,46 @@ table.matrix tbody td strong{
           <div class="en">The <em>Quality</em></div>
           <div class="ja">あの質 ／ 名づけられないが、誰もが知っている「よさ」</div>
           <div class="meta">Chapter 02 ／ The Central Concept</div>
+        </div>
+      </div>
+
+      <div class="tldr">
+        <span class="lbl">TL;DR</span>
+        <div class="body">本書の中心概念──<strong>「名のない質（QWAN）」</strong>。Alive・Whole・Free・Exact・Egoless・Eternal──近づくが、どの語にも回収されない。<strong>定義に失敗してみせる</strong>ことで、輪郭を浮かび上がらせる。</div>
+      </div>
+
+      <div class="keyvis">
+        <div class="kv-text">
+          <span class="kv-lbl">Key Image ／ 章の骨格</span>
+          <p class="kv-cap">中心の<strong>核</strong>を、五つ六つの近似語が取り囲む。どの語も核に届かないが、合わさって輪郭が見える。これが本書の語り方。</p>
+        </div>
+        <div class="kv-fig">
+          <svg viewBox="0 0 220 160" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="110" cy="80" r="14" fill="#9b2018"/>
+            <text x="110" y="84" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="10" fill="#fbf5e7" font-weight="600">QWAN</text>
+            <g fill="none" stroke="#b88a2c" stroke-width=".8" stroke-dasharray="2,2">
+              <circle cx="110" cy="80" r="40" opacity=".5"/>
+              <circle cx="110" cy="80" r="60" opacity=".3"/>
+            </g>
+            <g font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="11" fill="#3a3128">
+              <text x="110" y="28" text-anchor="middle">Alive</text>
+              <text x="180" y="55" text-anchor="middle">Whole</text>
+              <text x="195" y="110" text-anchor="middle">Free</text>
+              <text x="155" y="148" text-anchor="middle">Exact</text>
+              <text x="65" y="148" text-anchor="middle">Egoless</text>
+              <text x="22" y="110" text-anchor="middle">Eternal</text>
+              <text x="38" y="55" text-anchor="middle">Comfortable</text>
+            </g>
+            <g stroke="#cdbb9c" stroke-width=".5" fill="none">
+              <line x1="110" y1="40" x2="110" y2="65"/>
+              <line x1="170" y1="60" x2="125" y2="73"/>
+              <line x1="180" y1="103" x2="125" y2="84"/>
+              <line x1="148" y1="138" x2="118" y2="93"/>
+              <line x1="72" y1="138" x2="102" y2="93"/>
+              <line x1="32" y1="103" x2="95" y2="84"/>
+              <line x1="50" y1="60" x2="95" y2="73"/>
+            </g>
+          </svg>
         </div>
       </div>
 
@@ -1396,6 +1720,11 @@ table.matrix tbody td strong{
         <span class="tag">Phenomenology</span>
         <span class="tag">Brand-Soul</span>
       </div>
+
+      <div class="takeaway">
+        <span class="ico">Take Away<span class="ja">この章で覚える一行</span></span>
+        <div class="line">本当に大切な質ほど、<strong>ひとことのスローガンに圧縮した瞬間に死ぬ</strong>。</div>
+      </div>
     </article>
 
     <!-- 第3章 -->
@@ -1406,6 +1735,46 @@ table.matrix tbody td strong{
           <div class="en">The <em>Events</em> Which Happen There</div>
           <div class="ja">そこで起きる出来事 ／ 場所を決めるのは「物」ではなく「出来事のパターン」である</div>
           <div class="meta">Chapter 03 ／ Events Define Place</div>
+        </div>
+      </div>
+
+      <div class="tldr">
+        <span class="lbl">TL;DR</span>
+        <div class="body">場所の性格は、<strong>形が決めるのではなく、そこで繰り返される出来事のパターン</strong>が決める。同じ建物でも、起きていることが違えば、別の場所になる。</div>
+      </div>
+
+      <div class="keyvis">
+        <div class="kv-text">
+          <span class="kv-lbl">Key Image ／ 章の骨格</span>
+          <p class="kv-cap">同じ「箱」でも、起きる出来事が変われば、場所の性格はまったく別。<strong>物 ＜ 出来事</strong>。</p>
+        </div>
+        <div class="kv-fig">
+          <svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+            <!-- 左：同じ箱 -->
+            <g fill="none" stroke="#3a3128" stroke-width="1">
+              <rect x="20" y="30" width="60" height="70"/>
+              <rect x="135" y="30" width="60" height="70"/>
+            </g>
+            <!-- 出来事マーカー -->
+            <g fill="#9b2018">
+              <circle cx="40" cy="55" r="2.5"/>
+              <circle cx="55" cy="50" r="2.5"/>
+              <circle cx="40" cy="80" r="2.5"/>
+              <circle cx="60" cy="80" r="2.5"/>
+            </g>
+            <g fill="#27465a">
+              <circle cx="155" cy="40" r="2.5"/>
+              <circle cx="180" cy="60" r="2.5"/>
+              <circle cx="145" cy="75" r="2.5"/>
+              <circle cx="170" cy="90" r="2.5"/>
+              <circle cx="155" cy="55" r="2.5"/>
+              <circle cx="180" cy="80" r="2.5"/>
+            </g>
+            <text x="50" y="118" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="9" fill="#3a3128">静かな常連の朝</text>
+            <text x="165" y="118" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="9" fill="#3a3128">観光客の昼</text>
+            <text x="110" y="20" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="10" fill="#9b2018">same box, different place</text>
+            <text x="110" y="135" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="9" fill="#7a6d5e">出来事のパターンが、場所を作る</text>
+          </svg>
         </div>
       </div>
 
@@ -1438,6 +1807,11 @@ table.matrix tbody td strong{
         <span class="tag">Pattern of Life</span>
         <span class="tag">Beyond Function</span>
       </div>
+
+      <div class="takeaway">
+        <span class="ico">Take Away<span class="ja">この章で覚える一行</span></span>
+        <div class="line">設計の起点は<strong>「ここで生まれてほしい小さな出来事」</strong>──それを支える物が、後から決まる。</div>
+      </div>
     </article>
 
     <!-- 第4章 -->
@@ -1448,6 +1822,31 @@ table.matrix tbody td strong{
           <div class="en">The <em>Pattern</em> Which Brings the Quality</div>
           <div class="ja">質を運ぶパターン ／ 出来事のパターンと、それを支える空間のパターン</div>
           <div class="meta">Chapter 04 ／ Pattern as Bridge</div>
+        </div>
+      </div>
+
+      <div class="tldr">
+        <span class="lbl">TL;DR</span>
+        <div class="body">パターンとは<strong>「形」ではなく「出来事と空間の噛み合い」</strong>のこと。窓辺のベンチが「窓辺のベンチ」なのは、形ではなく、<strong>そこに座って外を眺める出来事と、それを支える奥行きの関係</strong>そのもの。</div>
+      </div>
+
+      <div class="keyvis">
+        <div class="kv-text">
+          <span class="kv-lbl">Key Image ／ 章の骨格</span>
+          <p class="kv-cap"><strong>出来事 × 空間 ＝ パターン</strong>。両方を一緒にとらえている。形だけ・出来事だけでは、まだパターンではない。</p>
+        </div>
+        <div class="kv-fig">
+          <svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="75" cy="65" r="42" fill="rgba(155,32,24,.12)" stroke="#9b2018" stroke-width="1"/>
+            <circle cx="145" cy="65" r="42" fill="rgba(39,70,90,.12)" stroke="#27465a" stroke-width="1"/>
+            <text x="60" y="55" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="11" fill="#9b2018" font-weight="600">Events</text>
+            <text x="60" y="72" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="10" fill="#3a3128">出来事</text>
+            <text x="160" y="55" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="11" fill="#27465a" font-weight="600">Space</text>
+            <text x="160" y="72" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="10" fill="#3a3128">空間</text>
+            <text x="110" y="60" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="13" fill="#b88a2c" font-weight="700">Pattern</text>
+            <text x="110" y="76" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="9" fill="#7a6d5e">パターン</text>
+            <text x="110" y="130" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="10" fill="#7a6d5e">— the meeting of the two —</text>
+          </svg>
         </div>
       </div>
 
@@ -1480,6 +1879,11 @@ table.matrix tbody td strong{
         <span class="tag">Template ≠ Pattern</span>
         <span class="tag">Knowledge Transfer</span>
       </div>
+
+      <div class="takeaway">
+        <span class="ico">Take Away<span class="ja">この章で覚える一行</span></span>
+        <div class="line">パターンは<strong>形のテンプレートではなく、関係の骨格</strong>。だから時代も場所も超えて使い回せる。</div>
+      </div>
     </article>
 
     <!-- 第5章 -->
@@ -1490,6 +1894,48 @@ table.matrix tbody td strong{
           <div class="en">The <em>Whole</em></div>
           <div class="ja">全体性 ／ 質は、部分の総和ではなく、関係の場として現れる</div>
           <div class="meta">Chapter 05 ／ Wholeness as Emergence</div>
+        </div>
+      </div>
+
+      <div class="tldr">
+        <span class="lbl">TL;DR</span>
+        <div class="body">名のない質は、ひとつの部屋に宿るのではない。<strong>建物・庭・道・町といった関係の入れ子全体</strong>に宿る。優れたディテールを集めても、全体の「いきいきしさ」は出ない。</div>
+      </div>
+
+      <div class="keyvis">
+        <div class="kv-text">
+          <span class="kv-lbl">Key Image ／ 章の骨格</span>
+          <p class="kv-cap">部品の足し算では、全体は立ち上がらない。<strong>「全体としての気配」を最初に立て、そこから細部へ降りる</strong>。逆向きはほぼ失敗する。</p>
+        </div>
+        <div class="kv-fig">
+          <svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+            <!-- 左：足し算 -->
+            <g fill="none" stroke="#7a6d5e" stroke-width="1">
+              <rect x="15" y="50" width="14" height="14"/>
+              <rect x="33" y="50" width="14" height="14"/>
+              <rect x="51" y="50" width="14" height="14"/>
+              <rect x="15" y="68" width="14" height="14"/>
+              <rect x="33" y="68" width="14" height="14"/>
+              <rect x="51" y="68" width="14" height="14"/>
+            </g>
+            <text x="40" y="42" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="9" fill="#7a6d5e">parts only</text>
+            <text x="40" y="100" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="9" fill="#7a6d5e">部分の足し算</text>
+            <line x1="80" y1="65" x2="105" y2="65" stroke="#cdbb9c" stroke-width=".8" marker-end="url(#x)"/>
+            <text x="92" y="58" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="11" fill="#9b2018">≠</text>
+            <!-- 右：全体 -->
+            <g>
+              <circle cx="160" cy="65" r="35" fill="rgba(184,138,44,.15)" stroke="#b88a2c" stroke-width="1.2"/>
+              <g fill="none" stroke="#9b2018" stroke-width=".7">
+                <rect x="148" y="55" width="10" height="10"/>
+                <rect x="162" y="55" width="10" height="10"/>
+                <rect x="148" y="69" width="10" height="10"/>
+                <rect x="162" y="69" width="10" height="10"/>
+              </g>
+            </g>
+            <text x="160" y="32" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="11" fill="#9b2018" font-weight="600">the whole</text>
+            <text x="160" y="118" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="9" fill="#3a3128">全体が部分を包む</text>
+            <text x="110" y="135" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="9" fill="#7a6d5e">whole-first, then differentiate</text>
+          </svg>
         </div>
       </div>
 
@@ -1521,6 +1967,11 @@ table.matrix tbody td strong{
         <span class="tag">Emergence</span>
         <span class="tag">Perception First</span>
       </div>
+
+      <div class="takeaway">
+        <span class="ico">Take Away<span class="ja">この章で覚える一行</span></span>
+        <div class="line"><strong>全体は、分解する前から先にある</strong>。部分は、その全体から分化していくべきもの。</div>
+      </div>
     </article>
 
     <!-- 第一幕の小休止 -->
@@ -1541,6 +1992,14 @@ table.matrix tbody td strong{
   <div class="ja">第二幕 ／ 門への道</div>
   <p class="lede">第一幕で<em>「名のない質」</em>が存在することを認めたうえで、第二幕は、ではその質をどう生みだすのか、という方法の探求に入る。鍵となるのは、<strong>パターン</strong>と、それを語彙として持つ<strong>言語（language）</strong>という発想である。第二幕は、本書のなかでもっとも実践的な十章であり、後年のデザインパターン運動はほぼこの幕から生まれた。</p>
   <div class="ornament"></div>
+  <div class="act-questions">
+    <span class="lbl">— 第二幕で答える3つの問い —</span>
+    <ol>
+      <li>なぜ近代の建物は「死んでいる」と感じられるのか？</li>
+      <li>パターンとは、結局どういう構造をしているのか？</li>
+      <li>個人の知恵を、どう「共有可能な言語」に変えるのか？</li>
+    </ol>
+  </div>
 </section>
 
 <section class="essay">
@@ -1555,6 +2014,43 @@ table.matrix tbody td strong{
           <div class="en">The <em>Process</em> of Building</div>
           <div class="ja">建てるという過程 ／ 質を生むのは「設計」ではなく「過程」である</div>
           <div class="meta">Chapter 06 ／ Process Over Plan</div>
+        </div>
+      </div>
+
+      <div class="tldr">
+        <span class="lbl">TL;DR</span>
+        <div class="body">名のない質は、<strong>形ではなく、それを生んだ過程に宿る</strong>。ヴァナキュラー建築が生きているのは、世代を超えた小さな調整の連鎖から生まれているから。一回的な設計には宿らない。</div>
+      </div>
+
+      <div class="keyvis">
+        <div class="kv-text">
+          <span class="kv-lbl">Key Image ／ 章の骨格</span>
+          <p class="kv-cap"><strong>近代型：</strong>マスタープラン →一気に建てる。<br><strong>時を超えた道：</strong>状況をみて → 一手打つ → みて → 次の一手。</p>
+        </div>
+        <div class="kv-fig">
+          <svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+            <!-- 上：マスタープラン -->
+            <text x="20" y="22" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="9" fill="#7a6d5e">modern</text>
+            <line x1="20" y1="35" x2="200" y2="35" stroke="#7a6d5e" stroke-width="1"/>
+            <circle cx="20" cy="35" r="3" fill="#7a6d5e"/>
+            <circle cx="200" cy="35" r="3" fill="#9b2018"/>
+            <text x="110" y="50" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="9" fill="#7a6d5e">図面 → 一気に完成</text>
+            <!-- 下：generative -->
+            <text x="20" y="80" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="9" fill="#9b2018" font-weight="600">timeless</text>
+            <g fill="none" stroke="#9b2018" stroke-width="1">
+              <circle cx="25" cy="95" r="3" fill="#9b2018"/>
+              <circle cx="55" cy="95" r="3" fill="#9b2018"/>
+              <circle cx="90" cy="95" r="4" fill="#9b2018"/>
+              <circle cx="130" cy="95" r="5" fill="#9b2018"/>
+              <circle cx="170" cy="95" r="6" fill="#9b2018"/>
+              <line x1="28" y1="95" x2="52" y2="95" stroke-dasharray="2,2"/>
+              <line x1="58" y1="95" x2="86" y2="95" stroke-dasharray="2,2"/>
+              <line x1="94" y1="95" x2="125" y2="95" stroke-dasharray="2,2"/>
+              <line x1="135" y1="95" x2="164" y2="95" stroke-dasharray="2,2"/>
+            </g>
+            <text x="100" y="115" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="9" fill="#3a3128">小さな調整の連鎖が、形を育てる</text>
+            <text x="110" y="132" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="9" fill="#7a6d5e">— see, do, see, do —</text>
+          </svg>
         </div>
       </div>
 
@@ -1586,6 +2082,11 @@ table.matrix tbody td strong{
         <span class="tag">Generative</span>
         <span class="tag">Anti-Master-Plan</span>
       </div>
+
+      <div class="takeaway">
+        <span class="ico">Take Away<span class="ja">この章で覚える一行</span></span>
+        <div class="line">優れた仕様書を書いて一気に作るより、<strong>小さな仕掛けを順に積み、ふるまいを見て調整する</strong>ほうが、生きたものが残る。</div>
+      </div>
     </article>
 
     <!-- 第7章 -->
@@ -1596,6 +2097,35 @@ table.matrix tbody td strong{
           <div class="en">The <em>Pattern</em> Language</div>
           <div class="ja">パターン言語 ／ 言語のように、文法をもち、組み合わせ可能な、解の体系</div>
           <div class="meta">Chapter 07 ／ Language of Patterns</div>
+        </div>
+      </div>
+
+      <div class="tldr">
+        <span class="lbl">TL;DR</span>
+        <div class="body">パターンは、ばらばらに存在するのではない。<strong>互いに参照しあう「言語」として体系をなしている</strong>。文の中に節があり、節の中に語があるように、パターンは入れ子で連結される。</div>
+      </div>
+
+      <div class="keyvis">
+        <div class="kv-text">
+          <span class="kv-lbl">Key Image ／ 章の骨格</span>
+          <p class="kv-cap">大きなパターンが、中ぐらいのパターンを抱え、それがさらに小さなパターンを抱える。<strong>町 → 街区 → 建物 → 部屋 → 窓辺</strong>。一本の階層構造。</p>
+        </div>
+        <div class="kv-fig">
+          <svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+            <g fill="none" stroke="#9b2018">
+              <rect x="15" y="15" width="190" height="110" stroke-width="1.2"/>
+              <rect x="35" y="35" width="150" height="80" stroke-width="1" opacity=".85"/>
+              <rect x="60" y="55" width="100" height="50" stroke-width=".9" opacity=".7"/>
+              <rect x="85" y="70" width="50" height="25" stroke-width=".7" opacity=".55"/>
+            </g>
+            <g font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="8.5" fill="#9b2018">
+              <text x="20" y="13">Town</text>
+              <text x="40" y="33">District</text>
+              <text x="65" y="53">Building</text>
+              <text x="90" y="68">Room</text>
+            </g>
+            <text x="110" y="135" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="9" fill="#7a6d5e">— a nested grammar —</text>
+          </svg>
         </div>
       </div>
 
@@ -1627,6 +2157,11 @@ table.matrix tbody td strong{
         <span class="tag">Shared Knowledge</span>
         <span class="tag">DSL</span>
       </div>
+
+      <div class="takeaway">
+        <span class="ico">Take Away<span class="ja">この章で覚える一行</span></span>
+        <div class="line">語彙を「集める」のではなく、<strong>互いに参照しあう言語として組む</strong>。これがパターン言語の核心。</div>
+      </div>
     </article>
 
     <!-- 第8章 -->
@@ -1637,6 +2172,45 @@ table.matrix tbody td strong{
           <div class="en">Languages Which <em>Forget</em> Themselves</div>
           <div class="ja">忘れられた言語 ／ なぜ近代になって、人々は「建てかた」を忘れたのか</div>
           <div class="meta">Chapter 08 ／ Loss of Vernacular</div>
+        </div>
+      </div>
+
+      <div class="tldr">
+        <span class="lbl">TL;DR</span>
+        <div class="body">パターン言語は、もとは生活の中に息づいていた。それを<strong>「専門分化」と「規模・速度」の二つが破壊した</strong>。住み手は消費者になり、建てかたを語る言葉を失った。</div>
+      </div>
+
+      <div class="keyvis">
+        <div class="kv-text">
+          <span class="kv-lbl">Key Image ／ 章の骨格</span>
+          <p class="kv-cap">かつて：住み手 ⇄ 職人 ⇄ 近所、すべてが同じ語彙を共有。<br>近代：住み手は<strong>カタログから選ぶ消費者</strong>へ。語彙は専門家のなかにだけ。</p>
+        </div>
+        <div class="kv-fig">
+          <svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+            <!-- 上：共有 -->
+            <text x="20" y="22" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="9" fill="#7a6d5e">before</text>
+            <g>
+              <circle cx="50" cy="38" r="8" fill="none" stroke="#9b2018" stroke-width="1"/>
+              <circle cx="100" cy="38" r="8" fill="none" stroke="#9b2018" stroke-width="1"/>
+              <circle cx="150" cy="38" r="8" fill="none" stroke="#9b2018" stroke-width="1"/>
+              <line x1="58" y1="38" x2="92" y2="38" stroke="#9b2018" stroke-width="1"/>
+              <line x1="108" y1="38" x2="142" y2="38" stroke="#9b2018" stroke-width="1"/>
+              <line x1="50" y1="46" x2="100" y2="58" stroke="#9b2018" stroke-width=".5"/>
+              <line x1="150" y1="46" x2="100" y2="58" stroke="#9b2018" stroke-width=".5"/>
+              <text x="100" y="62" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="8" fill="#9b2018">shared language</text>
+            </g>
+            <!-- 下：分断 -->
+            <text x="20" y="92" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="9" fill="#7a6d5e">after</text>
+            <g>
+              <circle cx="50" cy="108" r="8" fill="none" stroke="#7a6d5e" stroke-width="1"/>
+              <rect x="92" y="100" width="16" height="16" fill="none" stroke="#7a6d5e" stroke-width="1"/>
+              <circle cx="150" cy="108" r="8" fill="none" stroke="#7a6d5e" stroke-width="1"/>
+            </g>
+            <text x="50" y="128" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="8" fill="#7a6d5e">住み手</text>
+            <text x="100" y="128" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="8" fill="#7a6d5e">専門家</text>
+            <text x="150" y="128" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="8" fill="#7a6d5e">職人</text>
+            <text x="100" y="138" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="8" fill="#9b2018">— disconnected —</text>
+          </svg>
         </div>
       </div>
 
@@ -1668,6 +2242,11 @@ table.matrix tbody td strong{
         <span class="tag">Industrialization</span>
         <span class="tag">Tacit Knowledge</span>
       </div>
+
+      <div class="takeaway">
+        <span class="ico">Take Away<span class="ja">この章で覚える一行</span></span>
+        <div class="line">ベテランが退職するたびに、組織は<strong>自分たちの作法を忘れる</strong>。言語の明示化は、忘却への最大の防衛策。</div>
+      </div>
     </article>
 
     <!-- 第9章 -->
@@ -1678,6 +2257,34 @@ table.matrix tbody td strong{
           <div class="en">The <em>Structure</em> of a Pattern</div>
           <div class="ja">パターンの構造 ／ Context・Forces・Solution の三項関係</div>
           <div class="meta">Chapter 09 ／ Anatomy of a Pattern</div>
+        </div>
+      </div>
+
+      <div class="tldr">
+        <span class="lbl">TL;DR</span>
+        <div class="body">パターンは<strong>〈状況・力・解〉の三項</strong>でできている。「解」だけ書いても再現しない──だから「ベストプラクティス集」はまねしても効かない。<strong>力まで書いて、はじめて伝承可能</strong>になる。</div>
+      </div>
+
+      <div class="keyvis">
+        <div class="kv-text">
+          <span class="kv-lbl">Key Image ／ 章の骨格</span>
+          <p class="kv-cap">三角形の三項が揃って、はじめてパターン。<strong>どれかひとつ欠けると、再利用できない知</strong>になる。</p>
+        </div>
+        <div class="kv-fig">
+          <svg viewBox="0 0 220 160" xmlns="http://www.w3.org/2000/svg">
+            <g fill="none" stroke="#9b2018" stroke-width="1.2">
+              <polygon points="110,30 40,130 180,130"/>
+            </g>
+            <circle cx="110" cy="30" r="22" fill="rgba(155,32,24,.08)" stroke="#9b2018" stroke-width="1"/>
+            <circle cx="40" cy="130" r="22" fill="rgba(39,70,90,.08)" stroke="#27465a" stroke-width="1"/>
+            <circle cx="180" cy="130" r="22" fill="rgba(184,138,44,.08)" stroke="#b88a2c" stroke-width="1"/>
+            <text x="110" y="28" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="11" fill="#9b2018" font-weight="600">Context</text>
+            <text x="110" y="40" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="9" fill="#3a3128">状況</text>
+            <text x="40" y="128" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="11" fill="#27465a" font-weight="600">Forces</text>
+            <text x="40" y="140" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="9" fill="#3a3128">力</text>
+            <text x="180" y="128" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="11" fill="#b88a2c" font-weight="600">Solution</text>
+            <text x="180" y="140" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="9" fill="#3a3128">解</text>
+          </svg>
         </div>
       </div>
 
@@ -1738,6 +2345,11 @@ table.matrix tbody td strong{
         <span class="tag">Solution</span>
         <span class="tag">Re-usable Knowledge</span>
       </div>
+
+      <div class="takeaway">
+        <span class="ico">Take Away<span class="ja">この章で覚える一行</span></span>
+        <div class="line"><strong>「成功事例」は、力まで書かないと再現しない</strong>。施策ログの最小フォーマットは〈状況・力・解〉の三項。</div>
+      </div>
     </article>
 
     <!-- 第10章 -->
@@ -1748,6 +2360,42 @@ table.matrix tbody td strong{
           <div class="en">The <em>Forces</em></div>
           <div class="ja">力 ／ 場所のなかで、対立しながら共存する複数の要求</div>
           <div class="meta">Chapter 10 ／ Conflicts as Design Material</div>
+        </div>
+      </div>
+
+      <div class="tldr">
+        <span class="lbl">TL;DR</span>
+        <div class="body">力（forces）は、状況の中で<strong>互いに対立しながら同時に立ちあがる複数の要求</strong>。優れたパターンは、力を「妥協」ではなく<strong>「同時成立」</strong>によって解く。これが本書の心臓部。</div>
+      </div>
+
+      <div class="keyvis">
+        <div class="kv-text">
+          <span class="kv-lbl">Key Image ／ 章の骨格</span>
+          <p class="kv-cap">悪い解：A or B（妥協）。<br>良い解：A <strong>かつ</strong> B（別の次元で取り合わせる）。</p>
+        </div>
+        <div class="kv-fig">
+          <svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+            <!-- 妥協 -->
+            <g>
+              <text x="55" y="20" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="9" fill="#7a6d5e">compromise</text>
+              <line x1="20" y1="50" x2="90" y2="50" stroke="#7a6d5e" stroke-width="1"/>
+              <text x="20" y="48" font-family="Noto Serif JP, serif" font-size="9" fill="#3a3128">A</text>
+              <text x="86" y="48" font-family="Noto Serif JP, serif" font-size="9" fill="#3a3128">B</text>
+              <circle cx="55" cy="50" r="3" fill="#7a6d5e"/>
+              <text x="55" y="68" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="9" fill="#7a6d5e">どちらも半分</text>
+            </g>
+            <!-- 同時成立 -->
+            <g>
+              <text x="165" y="20" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="9" fill="#9b2018" font-weight="600">co-resolution</text>
+              <circle cx="148" cy="55" r="18" fill="rgba(155,32,24,.15)" stroke="#9b2018" stroke-width="1"/>
+              <circle cx="180" cy="55" r="18" fill="rgba(184,138,44,.15)" stroke="#b88a2c" stroke-width="1"/>
+              <text x="142" y="58" font-family="Noto Serif JP, serif" font-size="9" fill="#3a3128">A</text>
+              <text x="182" y="58" font-family="Noto Serif JP, serif" font-size="9" fill="#3a3128">B</text>
+              <text x="165" y="58" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="9" fill="#9b2018" font-weight="700">∩</text>
+              <text x="165" y="92" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="9" fill="#9b2018">両方を、別の次元で</text>
+            </g>
+            <text x="110" y="125" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="9" fill="#7a6d5e">"and" beats "or" — every time</text>
+          </svg>
         </div>
       </div>
 
@@ -1779,6 +2427,11 @@ table.matrix tbody td strong{
         <span class="tag">Co-resolution</span>
         <span class="tag">Design Lens</span>
       </div>
+
+      <div class="takeaway">
+        <span class="ico">Take Away<span class="ja">この章で覚える一行</span></span>
+        <div class="line">「目的」は単数で議論を貧しくする。<strong>「ここで競合している複数の力は何か」</strong>と問えば、解像度が上がる。</div>
+      </div>
     </article>
 
     <!-- 第11章 -->
@@ -1789,6 +2442,41 @@ table.matrix tbody td strong{
           <div class="en">Patterns Are <em>Alive</em> Or Dead</div>
           <div class="ja">生きたパターン、死んだパターン ／ 同じ形でも、力に応えていなければ死んでいる</div>
           <div class="meta">Chapter 11 ／ The Test of Aliveness</div>
+        </div>
+      </div>
+
+      <div class="tldr">
+        <span class="lbl">TL;DR</span>
+        <div class="body">同じ形でも、その場所の力にきちんと応答していれば<strong>生きている</strong>。応答していなければ<strong>形だけ死んでいる</strong>。生死は形ではなく<strong>「形と力の関係」</strong>で決まる。</div>
+      </div>
+
+      <div class="keyvis">
+        <div class="kv-text">
+          <span class="kv-lbl">Key Image ／ 章の骨格</span>
+          <p class="kv-cap">同じ「窓辺のベンチ」でも、座って心がほどけるなら生。形だけそこにあって誰も座らないなら死。<strong>判定は使い手の身体側でしかできない</strong>。</p>
+        </div>
+        <div class="kv-fig">
+          <svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+            <g fill="none" stroke="#9b2018" stroke-width="1">
+              <rect x="20" y="35" width="80" height="70"/>
+              <line x1="40" y1="55" x2="80" y2="55"/>
+              <line x1="40" y1="55" x2="40" y2="80"/>
+              <line x1="80" y1="55" x2="80" y2="80"/>
+              <rect x="38" y="78" width="44" height="6" fill="#9b2018"/>
+              <circle cx="60" cy="71" r="4" fill="#9b2018"/>
+            </g>
+            <text x="60" y="120" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="11" fill="#9b2018" font-weight="600">alive</text>
+            <text x="60" y="132" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="9" fill="#3a3128">人がいる</text>
+            <g fill="none" stroke="#7a6d5e" stroke-width="1">
+              <rect x="120" y="35" width="80" height="70"/>
+              <line x1="140" y1="55" x2="180" y2="55"/>
+              <line x1="140" y1="55" x2="140" y2="80"/>
+              <line x1="180" y1="55" x2="180" y2="80"/>
+              <rect x="138" y="78" width="44" height="6" fill="#7a6d5e"/>
+            </g>
+            <text x="160" y="120" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="11" fill="#7a6d5e">dead</text>
+            <text x="160" y="132" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="9" fill="#7a6d5e">同じ形だが、誰もいない</text>
+          </svg>
         </div>
       </div>
 
@@ -1820,6 +2508,11 @@ table.matrix tbody td strong{
         <span class="tag">User Authority</span>
         <span class="tag">Form ≠ Pattern</span>
       </div>
+
+      <div class="takeaway">
+        <span class="ico">Take Away<span class="ja">この章で覚える一行</span></span>
+        <div class="line">レビューでは「形」だけでなく<strong>「形と力の関係」</strong>を見る。仕様書に満足しないこと。</div>
+      </div>
     </article>
 
     <!-- 第12章 -->
@@ -1830,6 +2523,43 @@ table.matrix tbody td strong{
           <div class="en">Each Pattern in <em>Many Buildings</em></div>
           <div class="ja">同じパターン、無数のかたち ／ 普遍と個別の両立</div>
           <div class="meta">Chapter 12 ／ Generality and Specificity</div>
+        </div>
+      </div>
+
+      <div class="tldr">
+        <span class="lbl">TL;DR</span>
+        <div class="body">同じ「窓辺のベンチ」というパターンが、無数の異なる形で現れる。<strong>パターンが普遍的だからこそ、結果として個別性が無限に生まれる</strong>。テンプレートとは正反対の働き。</div>
+      </div>
+
+      <div class="keyvis">
+        <div class="kv-text">
+          <span class="kv-lbl">Key Image ／ 章の骨格</span>
+          <p class="kv-cap"><strong>テンプレート：</strong>同じ形をコピーする。個別性は死ぬ。<br><strong>パターン：</strong>同じ骨格から、毎回ちがう形が生まれる。</p>
+        </div>
+        <div class="kv-fig">
+          <svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+            <text x="20" y="22" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="9" fill="#7a6d5e">template</text>
+            <g fill="none" stroke="#7a6d5e" stroke-width=".8">
+              <rect x="15" y="32" width="20" height="20"/>
+              <rect x="40" y="32" width="20" height="20"/>
+              <rect x="65" y="32" width="20" height="20"/>
+              <rect x="90" y="32" width="20" height="20"/>
+            </g>
+            <text x="65" y="68" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="9" fill="#7a6d5e">同じものの繰り返し</text>
+            <text x="20" y="92" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="9" fill="#9b2018" font-weight="600">pattern</text>
+            <g fill="none" stroke="#9b2018" stroke-width=".8">
+              <rect x="15" y="100" width="22" height="18"/>
+              <polygon points="42,118 62,118 52,100"/>
+              <circle cx="78" cy="109" r="9"/>
+              <ellipse cx="105" cy="109" rx="12" ry="7"/>
+            </g>
+            <text x="65" y="135" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="9" fill="#9b2018">骨格は同じ、形は毎回ちがう</text>
+            <line x1="135" y1="20" x2="135" y2="135" stroke="#cdbb9c" stroke-width=".5"/>
+            <text x="180" y="60" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="11" fill="#9b2018" font-weight="600">universal</text>
+            <text x="180" y="74" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="9" fill="#9b2018">↑↓</text>
+            <text x="180" y="88" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="11" fill="#9b2018" font-weight="600">particular</text>
+            <text x="180" y="105" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="9" fill="#7a6d5e">同居する</text>
+          </svg>
         </div>
       </div>
 
@@ -1861,6 +2591,11 @@ table.matrix tbody td strong{
         <span class="tag">Anti-Template</span>
         <span class="tag">Design System</span>
       </div>
+
+      <div class="takeaway">
+        <span class="ico">Take Away<span class="ja">この章で覚える一行</span></span>
+        <div class="line">ガイドラインは<strong>個別の表現を縛るのではなく、生成の原理を共有する</strong>言語として書く。</div>
+      </div>
     </article>
 
     <!-- 第13章 -->
@@ -1871,6 +2606,39 @@ table.matrix tbody td strong{
           <div class="en">The <em>Quality</em> Generated by a Pattern Language</div>
           <div class="ja">言語が生む質 ／ よい言語は、結果として「いきいきしさ」を生む</div>
           <div class="meta">Chapter 13 ／ Why Languages Generate Life</div>
+        </div>
+      </div>
+
+      <div class="tldr">
+        <span class="lbl">TL;DR</span>
+        <div class="body">名のない質は、直接つくれない。だが<strong>「力の同時解消」を積み重ねる言語</strong>を介すれば、副産物として立ち上がる。質はミステリアスな霊感ではなく、<strong>方法によって追求できる</strong>。</div>
+      </div>
+
+      <div class="keyvis">
+        <div class="kv-text">
+          <span class="kv-lbl">Key Image ／ 章の骨格</span>
+          <p class="kv-cap">大階層から小階層まで、各層で力がきちんと解かれている。<strong>すべての層が「ぴたりと収まる」と、質が現れる</strong>。</p>
+        </div>
+        <div class="kv-fig">
+          <svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+            <g fill="none" stroke="#9b2018" stroke-width="1">
+              <rect x="20" y="20" width="180" height="20"/>
+              <rect x="30" y="45" width="160" height="20"/>
+              <rect x="40" y="70" width="140" height="20"/>
+              <rect x="50" y="95" width="120" height="20"/>
+            </g>
+            <g fill="#9b2018">
+              <text x="206" y="34" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="10">✓</text>
+              <text x="196" y="59" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="10">✓</text>
+              <text x="186" y="84" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="10">✓</text>
+              <text x="176" y="109" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="10">✓</text>
+            </g>
+            <text x="110" y="33" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="9" fill="#3a3128">町</text>
+            <text x="110" y="58" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="9" fill="#3a3128">建物</text>
+            <text x="110" y="83" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="9" fill="#3a3128">部屋</text>
+            <text x="110" y="108" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="9" fill="#3a3128">細部</text>
+            <text x="110" y="135" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="9" fill="#7a6d5e">all layers resolved → quality emerges</text>
+          </svg>
         </div>
       </div>
 
@@ -1902,6 +2670,11 @@ table.matrix tbody td strong{
         <span class="tag">Method Over Genius</span>
         <span class="tag">Brand Generation</span>
       </div>
+
+      <div class="takeaway">
+        <span class="ico">Take Away<span class="ja">この章で覚える一行</span></span>
+        <div class="line">「らしさ」は神秘的な才能ではない。<strong>整えた結果として現れる</strong>──組織的に追求できる。</div>
+      </div>
     </article>
 
     <!-- 第14章 -->
@@ -1912,6 +2685,39 @@ table.matrix tbody td strong{
           <div class="en">A <em>Shared</em> Language</div>
           <div class="ja">共有された言語 ／ 言語は、共同体の財産であってこそ意味をもつ</div>
           <div class="meta">Chapter 14 ／ Common Language as Commons</div>
+        </div>
+      </div>
+
+      <div class="tldr">
+        <span class="lbl">TL;DR</span>
+        <div class="body">パターン言語は、<strong>共有されてはじめて言語</strong>になる。個人が秘蔵していても言語にはならない──個人の知恵にすぎない。共有の効用は3つ：<strong>住み手が話せる／調整が早い／世代を超えて蓄積される</strong>。</div>
+      </div>
+
+      <div class="keyvis">
+        <div class="kv-text">
+          <span class="kv-lbl">Key Image ／ 章の骨格</span>
+          <p class="kv-cap">同じ語彙を、住み手・職人・近所が共有しているとき、はじめて<strong>「言語」</strong>として働く。一人だけの語彙は、知恵止まり。</p>
+        </div>
+        <div class="kv-fig">
+          <svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="110" cy="70" r="18" fill="rgba(184,138,44,.15)" stroke="#b88a2c" stroke-width="1"/>
+            <text x="110" y="68" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="9" fill="#b88a2c" font-weight="600">shared</text>
+            <text x="110" y="78" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="9" fill="#b88a2c" font-weight="600">vocab</text>
+            <g fill="none" stroke="#9b2018" stroke-width=".8">
+              <circle cx="40" cy="40" r="12"/>
+              <circle cx="180" cy="40" r="12"/>
+              <circle cx="40" cy="105" r="12"/>
+              <circle cx="180" cy="105" r="12"/>
+              <line x1="50" y1="48" x2="98" y2="62" stroke-dasharray="2,2"/>
+              <line x1="170" y1="48" x2="122" y2="62" stroke-dasharray="2,2"/>
+              <line x1="50" y1="98" x2="98" y2="80" stroke-dasharray="2,2"/>
+              <line x1="170" y1="98" x2="122" y2="80" stroke-dasharray="2,2"/>
+            </g>
+            <text x="40" y="42" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="9" fill="#3a3128">住み手</text>
+            <text x="180" y="42" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="9" fill="#3a3128">職人</text>
+            <text x="40" y="107" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="9" fill="#3a3128">近所</text>
+            <text x="180" y="107" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="9" fill="#3a3128">次世代</text>
+          </svg>
         </div>
       </div>
 
@@ -1943,6 +2749,11 @@ table.matrix tbody td strong{
         <span class="tag">Distributed Authorship</span>
         <span class="tag">Org-DSL</span>
       </div>
+
+      <div class="takeaway">
+        <span class="ico">Take Away<span class="ja">この章で覚える一行</span></span>
+        <div class="line">「社内用語の整備」は、地味だが<strong>創造力の基盤</strong>。同じ言葉を同じ意味で使えるか、で組織の上限が決まる。</div>
+      </div>
     </article>
 
     <!-- 第15章 -->
@@ -1953,6 +2764,34 @@ table.matrix tbody td strong{
           <div class="en">The <em>Reality</em> of the Pattern</div>
           <div class="ja">パターンの実在性 ／ パターンは、誰かの頭の中ではなく、世界の側にある</div>
           <div class="meta">Chapter 15 ／ Patterns Are Discovered, Not Invented</div>
+        </div>
+      </div>
+
+      <div class="tldr">
+        <span class="lbl">TL;DR</span>
+        <div class="body">パターンは、設計者が頭のなかで<strong>「発明」するのではなく、世界のなかで「発見」される</strong>。設計者の役割は創造者ではなく、発見者。これが本書最大の認識論的転回。</div>
+      </div>
+
+      <div class="keyvis">
+        <div class="kv-text">
+          <span class="kv-lbl">Key Image ／ 章の骨格</span>
+          <p class="kv-cap"><strong>近代：</strong>頭のなかに像をつくり、世界に押し当てる。<br><strong>本書：</strong>世界に内在する関係を、<strong>聴き取る</strong>。</p>
+        </div>
+        <div class="kv-fig">
+          <svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+            <text x="55" y="22" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="9" fill="#7a6d5e">invent</text>
+            <circle cx="55" cy="50" r="14" fill="none" stroke="#7a6d5e" stroke-width="1"/>
+            <text x="55" y="54" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="10" fill="#7a6d5e">mind</text>
+            <line x1="55" y1="64" x2="55" y2="92" stroke="#7a6d5e" stroke-width="1" marker-end="url(#a1)"/>
+            <rect x="40" y="92" width="30" height="14" fill="none" stroke="#7a6d5e" stroke-width="1"/>
+            <text x="55" y="120" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="9" fill="#7a6d5e">押し当てる</text>
+            <text x="165" y="22" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="9" fill="#9b2018" font-weight="600">discover</text>
+            <rect x="150" y="42" width="30" height="14" fill="none" stroke="#9b2018" stroke-width="1"/>
+            <line x1="165" y1="56" x2="165" y2="84" stroke="#9b2018" stroke-width="1"/>
+            <circle cx="165" cy="92" r="14" fill="none" stroke="#9b2018" stroke-width="1"/>
+            <text x="165" y="96" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="10" fill="#9b2018">mind</text>
+            <text x="165" y="120" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="9" fill="#9b2018">聴き取る</text>
+          </svg>
         </div>
       </div>
 
@@ -1984,6 +2823,11 @@ table.matrix tbody td strong{
         <span class="tag">Egoless</span>
         <span class="tag">Listening to the Site</span>
       </div>
+
+      <div class="takeaway">
+        <span class="ico">Take Away<span class="ja">この章で覚える一行</span></span>
+        <div class="line">良いデザインは、自己表現ではなく<strong>状況への謙虚な応答</strong>から生まれる。まず耳を澄ます。</div>
+      </div>
     </article>
 
     <blockquote class="large">
@@ -2003,6 +2847,14 @@ table.matrix tbody td strong{
   <div class="ja">第三幕 ／ 門 ── パターンを使うとはどういうことか</div>
   <p class="lede">第二幕で「言語」という発想を打ち出したアレグザンダーは、第三幕で<em>「門」</em>に到達する。門とは、言語を実際に使えるようになる<strong>能力の閾値</strong>である。語彙を持っただけでは、まだ言葉を話せない。語彙を組み合わせ、文をつくり、状況に応答し、適切に応えていく──その「話せるようになる」までの稽古を、この幕は扱う。</p>
   <div class="ornament"></div>
+  <div class="act-questions">
+    <span class="lbl">— 第三幕で答える3つの問い —</span>
+    <ol>
+      <li>パターンの「リスト」を持っているだけでは、なぜ足りないのか？</li>
+      <li>熟達者の頭のなかで、語彙はどう振る舞っているのか？</li>
+      <li>速くつくれるのに、あえて時間をかける理由は何か？</li>
+    </ol>
+  </div>
 </section>
 
 <section class="essay">
@@ -2017,6 +2869,36 @@ table.matrix tbody td strong{
           <div class="en">Building From <em>Patterns</em></div>
           <div class="ja">パターンから建てる ／ 設計とは、適切なパターンを順に呼び出す行為</div>
           <div class="meta">Chapter 16 ／ The Sequence of Patterns</div>
+        </div>
+      </div>
+
+      <div class="tldr">
+        <span class="lbl">TL;DR</span>
+        <div class="body">設計とはパターンを順に呼び出すこと。<strong>大きなパターンが、小さなパターンの「文脈」を与える</strong>。順序は必ず大→中→小。逆向きにやると、後戻りで組織が疲弊する。</div>
+      </div>
+
+      <div class="keyvis">
+        <div class="kv-text">
+          <span class="kv-lbl">Key Image ／ 章の骨格</span>
+          <p class="kv-cap">シーズン → 月 → 試合日 → 当日演出。<strong>大きな器を後回しにすると、コンテンツの整合性が雪崩を起こす</strong>。</p>
+        </div>
+        <div class="kv-fig">
+          <svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+            <g fill="none" stroke="#9b2018" stroke-width="1">
+              <circle cx="40" cy="70" r="28"/>
+              <circle cx="100" cy="70" r="20"/>
+              <circle cx="148" cy="70" r="14"/>
+              <circle cx="184" cy="70" r="9"/>
+            </g>
+            <g fill="#9b2018">
+              <text x="40" y="74" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="9">season</text>
+              <text x="100" y="74" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="9">month</text>
+              <text x="148" y="74" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="9">match</text>
+              <text x="184" y="74" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="8">day</text>
+            </g>
+            <line x1="68" y1="105" x2="160" y2="105" stroke="#b88a2c" stroke-width=".8" marker-end="url(#ar)"/>
+            <text x="110" y="125" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="10" fill="#7a6d5e">large → small, never the reverse</text>
+          </svg>
         </div>
       </div>
 
@@ -2048,6 +2930,11 @@ table.matrix tbody td strong{
         <span class="tag">Context-First</span>
         <span class="tag">Workflow</span>
       </div>
+
+      <div class="takeaway">
+        <span class="ico">Take Away<span class="ja">この章で覚える一行</span></span>
+        <div class="line">仕事の順序を<strong>「大→中→小」に揃える</strong>だけで、後戻りが激減する。</div>
+      </div>
     </article>
 
     <!-- 第17章 -->
@@ -2059,6 +2946,11 @@ table.matrix tbody td strong{
           <div class="ja">パターンの雲 ／ 心のなかに、語彙は緩やかな群れとして住む</div>
           <div class="meta">Chapter 17 ／ Internalized Vocabulary</div>
         </div>
+      </div>
+
+      <div class="tldr">
+        <span class="lbl">TL;DR</span>
+        <div class="body">熟達者は、パターンを箇条書きで覚えていない。<strong>頭のなかで雲のように漂い、状況に応じて自然に立ち上がる</strong>──母語話者が文法書を見ずに話せるのと同じ機制。</div>
       </div>
 
       <div class="ch-section">
@@ -2089,6 +2981,11 @@ table.matrix tbody td strong{
         <span class="tag">Skill Acquisition</span>
         <span class="tag">Embodiment</span>
       </div>
+
+      <div class="takeaway">
+        <span class="ico">Take Away<span class="ja">この章で覚える一行</span></span>
+        <div class="line">ガイドラインの文書化は入口にすぎない。<strong>身体化されてはじめて戦力</strong>になる。</div>
+      </div>
     </article>
 
     <!-- 第18章 -->
@@ -2100,6 +2997,11 @@ table.matrix tbody td strong{
           <div class="ja">言語の力 ／ 同じ言語から、無数のかたちが、しかも矛盾なく、生まれる</div>
           <div class="meta">Chapter 18 ／ Generative Power</div>
         </div>
+      </div>
+
+      <div class="tldr">
+        <span class="lbl">TL;DR</span>
+        <div class="body">同じパターン言語から、二つとして同じ建物は生まれない。それでも<strong>共通の言語に従っていることが感じられる</strong>。これが言語の生成力。テンプレートは、これができない。</div>
       </div>
 
       <div class="ch-section">
@@ -2130,6 +3032,11 @@ table.matrix tbody td strong{
         <span class="tag">Long-Lived Systems</span>
         <span class="tag">Governance</span>
       </div>
+
+      <div class="takeaway">
+        <span class="ico">Take Away<span class="ja">この章で覚える一行</span></span>
+        <div class="line">言語として設計されたものは<strong>担当者が変わっても生き続ける</strong>。型紙はその瞬間に陳腐化する。</div>
+      </div>
     </article>
 
     <!-- 第19章 -->
@@ -2141,6 +3048,11 @@ table.matrix tbody td strong{
           <div class="ja">過程のおそさ ／ 急いで作ったものは、生きない</div>
           <div class="meta">Chapter 19 ／ Time as Material</div>
         </div>
+      </div>
+
+      <div class="tldr">
+        <span class="lbl">TL;DR</span>
+        <div class="body">名のない質を生む過程は、<strong>原理的におそい</strong>。応答には観察が要り、観察には時間が要る。「速くつくる」と「よくつくる」は両立しない。<strong>すべてに同じ速度を当てる経営は、生きたものを生めない</strong>。</div>
       </div>
 
       <div class="ch-section">
@@ -2171,6 +3083,11 @@ table.matrix tbody td strong{
         <span class="tag">Maturation</span>
         <span class="tag">Cultural Time</span>
       </div>
+
+      <div class="takeaway">
+        <span class="ico">Take Away<span class="ja">この章で覚える一行</span></span>
+        <div class="line">速くやれることは速く、<strong>ゆっくりやるべきことは時間をかける</strong>。複数の時間軸を同時に経営する。</div>
+      </div>
     </article>
 
     <!-- 第20章 -->
@@ -2182,6 +3099,11 @@ table.matrix tbody td strong{
           <div class="ja">門をくぐる ／ 知識から実践へ、語彙から話者へ</div>
           <div class="meta">Chapter 20 ／ The Threshold of Mastery</div>
         </div>
+      </div>
+
+      <div class="tldr">
+        <span class="lbl">TL;DR</span>
+        <div class="body">語彙を「リスト」として持つだけでは、まだ門の手前。<strong>状況のなかでパターンが自然に呼び出されてくる状態</strong>──それが「門をくぐる」こと。新人 → 中堅 → 熟達者の三段モデル。</div>
       </div>
 
       <div class="ch-section">
@@ -2212,6 +3134,11 @@ table.matrix tbody td strong{
         <span class="tag">Beyond Checklist</span>
         <span class="tag">Embodied Practice</span>
       </div>
+
+      <div class="takeaway">
+        <span class="ico">Take Away<span class="ja">この章で覚える一行</span></span>
+        <div class="line">熟達のゴールは<strong>「リストを忘れてもよい状態」</strong>。マニュアル依存は熟達ではない。</div>
+      </div>
     </article>
 
     <blockquote class="large">
@@ -2230,6 +3157,14 @@ table.matrix tbody td strong{
   <div class="ja">第四幕 ／ 道 ── パターン言語による生成過程</div>
   <p class="lede">門をくぐった先には、具体的な<em>道（the way）</em>がある。第四幕は、パターン言語を使って実際に建物を生成していく、その<strong>連続的な過程</strong>を描く。設計図を一気に描いて完成させるのではなく、敷地に立ち、一歩ずつ全体を分化させ、修復を重ねながら、生きた形を立ち上げていく。本書のなかでもっとも実技的で、もっとも詩的な五章である。</p>
   <div class="ornament"></div>
+  <div class="act-questions">
+    <span class="lbl">— 第四幕で答える3つの問い —</span>
+    <ol>
+      <li>「組み立てる」と「分化させる」は、何がどう違うのか？</li>
+      <li>修復は、なぜ「保守」ではなく「生成の中心」なのか？</li>
+      <li>設計と施工を分けないとは、組織にとって何を意味するか？</li>
+    </ol>
+  </div>
 </section>
 
 <section class="essay">
@@ -2244,6 +3179,41 @@ table.matrix tbody td strong{
           <div class="en">The <em>Differentiation</em> of Space</div>
           <div class="ja">空間の分化 ／ 全体から部分へ、決して逆ではない</div>
           <div class="meta">Chapter 21 ／ Generation by Differentiation</div>
+        </div>
+      </div>
+
+      <div class="tldr">
+        <span class="lbl">TL;DR</span>
+        <div class="body">建物は、部品を組み立てて作るのではなく、<strong>全体を「分化」させて作る</strong>。受精卵が器官に分化するように、敷地はまず一つの場として把握され、内側から徐々に細かくなる。</div>
+      </div>
+
+      <div class="keyvis">
+        <div class="kv-text">
+          <span class="kv-lbl">Key Image ／ 章の骨格</span>
+          <p class="kv-cap">組み立て：部品を集めて接合 → 最後に全体が破綻していたら手遅れ。<br>分化：全体を保ちつつ細かく → <strong>各段階で全体性が育つ</strong>。</p>
+        </div>
+        <div class="kv-fig">
+          <svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+            <text x="55" y="22" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="9" fill="#7a6d5e">assembly</text>
+            <g fill="none" stroke="#7a6d5e" stroke-width=".8">
+              <rect x="20" y="40" width="14" height="14"/>
+              <rect x="40" y="40" width="14" height="14"/>
+              <rect x="60" y="40" width="14" height="14"/>
+              <rect x="80" y="40" width="14" height="14"/>
+            </g>
+            <line x1="55" y1="60" x2="55" y2="78" stroke="#7a6d5e" stroke-width=".8" marker-end="url(#a3)"/>
+            <rect x="20" y="80" width="74" height="22" fill="none" stroke="#7a6d5e" stroke-width="1"/>
+            <text x="55" y="120" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="9" fill="#7a6d5e">部品を寄せて接合</text>
+            <text x="165" y="22" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="9" fill="#9b2018" font-weight="600">differentiation</text>
+            <g fill="none" stroke="#9b2018" stroke-width="1">
+              <circle cx="165" cy="48" r="8"/>
+              <circle cx="165" cy="78" r="14"/>
+              <circle cx="165" cy="78" r="14"/>
+              <line x1="151" y1="78" x2="179" y2="78"/>
+              <circle cx="165" cy="78" r="22" stroke="#b88a2c"/>
+            </g>
+            <text x="165" y="120" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="9" fill="#9b2018">全体を保って細かく</text>
+          </svg>
         </div>
       </div>
 
@@ -2275,6 +3245,11 @@ table.matrix tbody td strong{
         <span class="tag">Embryology</span>
         <span class="tag">Whole-First</span>
       </div>
+
+      <div class="takeaway">
+        <span class="ico">Take Away<span class="ja">この章で覚える一行</span></span>
+        <div class="line">プロのライターが当然のようにやっていること──<strong>全体の骨格、章立て、節、文の順</strong>。これが分化。</div>
+      </div>
     </article>
 
     <!-- 第22章 -->
@@ -2286,6 +3261,11 @@ table.matrix tbody td strong{
           <div class="ja">一度にひとつのパターン ／ ゆっくり、しかし確実に、層を重ねる</div>
           <div class="meta">Chapter 22 ／ Sequential Application</div>
         </div>
+      </div>
+
+      <div class="tldr">
+        <span class="lbl">TL;DR</span>
+        <div class="body">パターンは<strong>一度にひとつずつ適用する</strong>。茶の点前のように、混ざれば雑になる。マルチタスクが標榜される時代に、もう一度取り戻すべき規律。</div>
       </div>
 
       <div class="ch-section">
@@ -2316,6 +3296,11 @@ table.matrix tbody td strong{
         <span class="tag">Discipline</span>
         <span class="tag">Anti-Multitask</span>
       </div>
+
+      <div class="takeaway">
+        <span class="ico">Take Away<span class="ja">この章で覚える一行</span></span>
+        <div class="line">本当に複雑な仕事は、<strong>ひとつずつ片づけたほうが、結果として速い</strong>。</div>
+      </div>
     </article>
 
     <!-- 第23章 -->
@@ -2326,6 +3311,41 @@ table.matrix tbody td strong{
           <div class="en">The <em>Repair</em> of the Whole</div>
           <div class="ja">全体の修復 ／ 完成は、新築よりも、絶え間ない修復から生まれる</div>
           <div class="meta">Chapter 23 ／ Repair as Generation</div>
+        </div>
+      </div>
+
+      <div class="tldr">
+        <span class="lbl">TL;DR</span>
+        <div class="body">完成は終点ではなく<strong>始まり</strong>。生きた建物は、住まわれていくなかで継続的に修復されることで、完成に近づき続ける。<strong>運用は「保守」ではなく「設計の継続」</strong>。</div>
+      </div>
+
+      <div class="keyvis">
+        <div class="kv-text">
+          <span class="kv-lbl">Key Image ／ 章の骨格</span>
+          <p class="kv-cap"><strong>近代型：</strong>竣工=頂点、その後は劣化。<br><strong>本書：</strong>竣工は始点、修復で完成に近づく。</p>
+        </div>
+        <div class="kv-fig">
+          <svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+            <g fill="none" stroke="#7a6d5e" stroke-width="1">
+              <path d="M15 95 Q 50 35 85 35 Q 100 35 105 95"/>
+            </g>
+            <text x="60" y="22" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="9" fill="#7a6d5e">modern</text>
+            <text x="60" y="115" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="9" fill="#7a6d5e">竣工で頂点、あとは下る</text>
+            <line x1="115" y1="20" x2="115" y2="120" stroke="#cdbb9c" stroke-width=".5"/>
+            <g fill="none" stroke="#9b2018" stroke-width="1.2">
+              <path d="M125 95 L 145 75 L 155 80 L 170 60 L 180 65 L 200 45"/>
+            </g>
+            <g fill="#9b2018">
+              <circle cx="125" cy="95" r="2"/>
+              <circle cx="145" cy="75" r="2"/>
+              <circle cx="155" cy="80" r="2"/>
+              <circle cx="170" cy="60" r="2"/>
+              <circle cx="180" cy="65" r="2"/>
+              <circle cx="200" cy="45" r="2.5"/>
+            </g>
+            <text x="160" y="22" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="9" fill="#9b2018" font-weight="600">timeless</text>
+            <text x="160" y="115" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="9" fill="#9b2018">修復のたびに完成へ近づく</text>
+          </svg>
         </div>
       </div>
 
@@ -2357,6 +3377,11 @@ table.matrix tbody td strong{
         <span class="tag">Operation as Design</span>
         <span class="tag">Long Life</span>
       </div>
+
+      <div class="takeaway">
+        <span class="ico">Take Away<span class="ja">この章で覚える一行</span></span>
+        <div class="line">長く愛されるものは、開業日の輝きで決まらない。<strong>その後の手入れの厚み</strong>で決まる。</div>
+      </div>
     </article>
 
     <!-- 第24章 -->
@@ -2368,6 +3393,11 @@ table.matrix tbody td strong{
           <div class="ja">形のおそい立ち上がり ／ 全体は、ゆっくりとしか姿を現さない</div>
           <div class="meta">Chapter 24 ／ Form as Emergence</div>
         </div>
+      </div>
+
+      <div class="tldr">
+        <span class="lbl">TL;DR</span>
+        <div class="body">設計は、頭のなかで完成図を組み立てる作業ではなく、<strong>場所のなかから形を呼び出す作業</strong>。形のおそさは、効率の問題ではなく、応答の質の問題。</div>
       </div>
 
       <div class="ch-section">
@@ -2398,6 +3428,11 @@ table.matrix tbody td strong{
         <span class="tag">Listening</span>
         <span class="tag">Creative Patience</span>
       </div>
+
+      <div class="takeaway">
+        <span class="ico">Take Away<span class="ja">この章で覚える一行</span></span>
+        <div class="line">生成AI時代こそ、<strong>「まだ形が見えていない」状態に踏みとどまれる人</strong>が、最終的に良いものを作る。</div>
+      </div>
     </article>
 
     <!-- 第25章 -->
@@ -2409,6 +3444,11 @@ table.matrix tbody td strong{
           <div class="ja">建設の過程 ／ 設計と施工の境界をなくす</div>
           <div class="meta">Chapter 25 ／ Building as Continuation of Design</div>
         </div>
+      </div>
+
+      <div class="tldr">
+        <span class="lbl">TL;DR</span>
+        <div class="body">図面が完成しても、現場で材料を見るまで本当の判断はできない。<strong>「建設は設計の続き」</strong>──最後の最後まで設計が続く体制が、生きた形を残す。</div>
       </div>
 
       <div class="ch-section">
@@ -2439,6 +3479,11 @@ table.matrix tbody td strong{
         <span class="tag">Specialization Critique</span>
         <span class="tag">Last-Mile</span>
       </div>
+
+      <div class="takeaway">
+        <span class="ico">Take Away<span class="ja">この章で覚える一行</span></span>
+        <div class="line">完璧な仕様書を渡してあとは現場任せ──この分業が、<strong>形だけは整っても生きていない</strong>結果を生む。</div>
+      </div>
     </article>
 
     <blockquote class="large">
@@ -2458,6 +3503,13 @@ table.matrix tbody td strong{
   <div class="ja">第五幕 ／ 核心 ── 道の向こうにあるもの</div>
   <p class="lede">本書最後の二章で、アレグザンダーは、ここまで丁寧に積みあげてきた言語論・パターン論・生成論を、すべて<em>畳んでしまう</em>。語彙も方法も、最終的には<strong>「いきいきしさそれ自体」</strong>を取り戻すための補助線にすぎなかった、と告白する。第五幕は、本書全体のうしろにずっと流れていた、ほとんど宗教的とも言える静けさが、ようやく表に立ち上がってくる場所である。</p>
   <div class="ornament"></div>
+  <div class="act-questions">
+    <span class="lbl">— 第五幕で答える2つの問い —</span>
+    <ol>
+      <li>これまで積みあげた「方法」は、最後にどうなるのか？</li>
+      <li>「無我（egolessness）」は、現代の作家性とどう違うのか？</li>
+    </ol>
+  </div>
 </section>
 
 <section class="essay">
@@ -2472,6 +3524,32 @@ table.matrix tbody td strong{
           <div class="en">The <em>Kernel</em> of the Way</div>
           <div class="ja">道の核心 ／ パターンも言語も、ある時点で手放される</div>
           <div class="meta">Chapter 26 ／ Beyond Patterns</div>
+        </div>
+      </div>
+
+      <div class="tldr">
+        <span class="lbl">TL;DR</span>
+        <div class="body">パターン言語は<strong>「足場（scaffold）」</strong>であって、目的地ではない。建物が立ち上がったあと、足場ははずされる。アレグザンダーは最初からそう設計していた。</div>
+      </div>
+
+      <div class="keyvis">
+        <div class="kv-text">
+          <span class="kv-lbl">Key Image ／ 章の骨格</span>
+          <p class="kv-cap">禅の<strong>「指月の指」</strong>。月を指す指は、月そのものではない。<strong>指を見るのをやめて月を見るために</strong>、指は要る。</p>
+        </div>
+        <div class="kv-fig">
+          <svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="170" cy="40" r="18" fill="rgba(184,138,44,.2)" stroke="#b88a2c" stroke-width="1.2"/>
+            <text x="170" y="44" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="9" fill="#b88a2c" font-weight="600">moon</text>
+            <g fill="none" stroke="#9b2018" stroke-width="1">
+              <line x1="40" y1="100" x2="140" y2="55"/>
+              <circle cx="40" cy="100" r="6"/>
+            </g>
+            <text x="40" y="118" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="9" fill="#9b2018">finger</text>
+            <text x="40" y="130" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="9" fill="#3a3128">指（パターン）</text>
+            <text x="170" y="78" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="9" fill="#3a3128">月（質）</text>
+            <text x="110" y="135" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="9" fill="#7a6d5e">— scaffolding, eventually removed —</text>
+          </svg>
         </div>
       </div>
 
@@ -2504,6 +3582,11 @@ table.matrix tbody td strong{
         <span class="tag">Method as Means</span>
         <span class="tag">Letting Go</span>
       </div>
+
+      <div class="takeaway">
+        <span class="ico">Take Away<span class="ja">この章で覚える一行</span></span>
+        <div class="line">マニュアルやガイドラインは、<strong>それを使わなくなれる人を育てるため</strong>にある。</div>
+      </div>
     </article>
 
     <!-- 第27章 -->
@@ -2514,6 +3597,30 @@ table.matrix tbody td strong{
           <div class="en">The <em>Timeless</em> Way</div>
           <div class="ja">時を超えた道 ／ 第一章の問いへの、長い旅を経た静かな回答</div>
           <div class="meta">Chapter 27 ／ Return to the Beginning</div>
+        </div>
+      </div>
+
+      <div class="tldr">
+        <span class="lbl">TL;DR</span>
+        <div class="body">本書は第一章と同じ題で閉じる。ただし、二十六章を経て戻ったとき、まったく違う重みを帯びている。<strong>「無我（egolessness）」</strong>──「私の作品」が消えたとき、はじめて生きたものが立ち上がる。</div>
+      </div>
+
+      <div class="keyvis">
+        <div class="kv-text">
+          <span class="kv-lbl">Key Image ／ 章の骨格</span>
+          <p class="kv-cap">第一章と第二十七章は<strong>同じ題</strong>で、本書はリングのように閉じる。同じ言葉でも、もはや知識としてではなく、<strong>歩かれた道</strong>として読み直される。</p>
+        </div>
+        <div class="kv-fig">
+          <svg viewBox="0 0 220 140" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="110" cy="70" r="48" fill="none" stroke="#9b2018" stroke-width="1.2"/>
+            <circle cx="110" cy="22" r="4" fill="#9b2018"/>
+            <text x="110" y="14" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="10" fill="#9b2018" font-weight="600">Ch. I = Ch. XXVII</text>
+            <g fill="none" stroke="#b88a2c" stroke-width=".8">
+              <path d="M158,70 a 48,48 0 0 1 -1,3" marker-end="url(#a4)"/>
+            </g>
+            <text x="110" y="74" text-anchor="middle" font-family="EB Garamond, Georgia, serif" font-style="italic" font-size="11" fill="#7a6d5e">the way</text>
+            <text x="110" y="135" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="9" fill="#7a6d5e">同じ問いに、歩いて戻る</text>
+          </svg>
         </div>
       </div>
 
@@ -2544,6 +3651,11 @@ table.matrix tbody td strong{
         <span class="tag">Return</span>
         <span class="tag">Closing the Circle</span>
         <span class="tag">Living Tradition</span>
+      </div>
+
+      <div class="takeaway">
+        <span class="ico">Take Away<span class="ja">この章で覚える一行</span></span>
+        <div class="line">誰のものでもないように見えて、丁寧に手を入れられている──<strong>そういう存在が、最後まで残る</strong>。</div>
       </div>
     </article>
 
